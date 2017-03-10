@@ -1,1 +1,1 @@
-Paralell programing course work
+Parallel programing course work

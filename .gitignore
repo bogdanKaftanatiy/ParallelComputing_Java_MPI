@@ -1,0 +1,17 @@
+# Java class files
+*.class
+lib/
+
+# Generated files
+bin/
+gen/
+out/
+target/
+
+# Log Files
+*.log
+
+# Intellij
+*.iml
+.idea/
+

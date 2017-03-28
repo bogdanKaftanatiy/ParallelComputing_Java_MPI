@@ -38,6 +38,10 @@ public class MyMatrix {
         return array[i][j];
     }
 
+    public void set(int i, int j, int value) {
+        array[i][j] = value;
+    }
+
     public int getDimension() {
         return dimension;
     }

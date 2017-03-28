@@ -23,9 +23,12 @@ public class MyVector {
         }
     }
 
-    public int getMaxElement() {
+    public int getMaxElement(int startIndex, int endIndex) {
+        if (startIndex < 0 || endIndex > dimension || startIndex >= endIndex)
+            throw new IllegalStateException();
+
         int result = Integer.MIN_VALUE;
-        for (int i = 0 ; i < dimension; i++) {
+        for (int i = startIndex ; i < endIndex; i++) {
             if(array[i] > result)
                 result = array[i];
         }

@@ -2,7 +2,6 @@ package com.kaftanatiy.CourseWork2017Program1.threads;
 
 import com.kaftanatiy.CourseWork2017Program1.Main;
 import com.kaftanatiy.CourseWork2017Program1.primitives.MyMatrix;
-import com.kaftanatiy.CourseWork2017Program1.primitives.MyVector;
 
 import java.util.concurrent.ForkJoinPool;
 

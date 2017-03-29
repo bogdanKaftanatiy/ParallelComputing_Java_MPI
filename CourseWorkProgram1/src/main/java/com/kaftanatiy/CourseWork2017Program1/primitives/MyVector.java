@@ -15,6 +15,11 @@ public class MyVector {
         array = new int[dimension];
     }
 
+    public MyVector(int[] array) {
+        this.array = array;
+        this.dimension = array.length;
+    }
+
     public void generate(int maxValue) {
         Random generator = new Random();
 
@@ -33,6 +38,21 @@ public class MyVector {
                 result = array[i];
         }
         return result;
+    }
+
+    public MyVector getPart(int startIndex, int endIndex) {
+        if(endIndex <= startIndex || endIndex > dimension || startIndex < 0)
+            throw new IllegalStateException();
+
+        int length = endIndex - startIndex;
+        int[] resultArray = new int[length];
+        System.arraycopy(this.array, startIndex, resultArray, 0, length);
+
+        return new MyVector(resultArray);
+    }
+
+    public int getDimension() {
+        return dimension;
     }
 
     @Override

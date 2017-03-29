@@ -4,6 +4,8 @@ import com.kaftanatiy.CourseWork2017Program1.Main;
 import com.kaftanatiy.CourseWork2017Program1.primitives.MyMatrix;
 import com.kaftanatiy.CourseWork2017Program1.primitives.MyVector;
 
+import java.util.concurrent.ForkJoinPool;
+
 /**
  * Class to execute the task
  * @author Bogdan Kaftanatiy
@@ -23,7 +25,7 @@ public class TaskWorker implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Thread " + tid + ": start execution");
+//        System.out.println("Thread " + tid + ": start execution");
         if (tid == 0) {
             monitor.inputMB();
             monitor.inputMO();
@@ -45,7 +47,10 @@ public class TaskWorker implements Runnable {
         int endIndex = (tid != Main.getP() - 1) ? (tid + 1) * Main.getH() : Main.getN();
 
 
-        int alpha_i = Main.getZ().getMaxElement(startIndex, endIndex);
+//        int alpha_i = Main.getZ().getMaxElement(startIndex, endIndex);
+        MyRecursiveMaxTask myRecursiveMaxTask = new MyRecursiveMaxTask(Main.getZ().getPart(startIndex, endIndex));
+        int alpha_i = new ForkJoinPool(Main.getH()).invoke(myRecursiveMaxTask);
+
         monitor.computeMaxAlpha(alpha_i);
 
         monitor.signalMaxDone();
@@ -72,33 +77,15 @@ public class TaskWorker implements Runnable {
             monitor.waitCalc();
         else
             monitor.signalCalcDone();
-
         if (tid == 0) {
+            Main.endTime = System.currentTimeMillis();
+            System.out.println("All threads ended calculations. Result time(ms): " + Main.getTime());
             if(Main.getMA().getDimension() < 10)
                 System.out.println("Result MA:\n" + Main.getMA());
             else
                 System.out.println("Result was calculated. Matrix is too large");
         }
 
-        System.out.println("Thread " + tid + ": finish execution");
+//        System.out.println("Thread " + tid + ": finish execution");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -7,10 +7,14 @@ import com.kaftanatiy.CourseWork2017Program1.threads.TaskWorker;
 
 public class Main {
     private static int N = 1000;
-    private static int P = 1000;
+    private static int P = 1;
     private static int H = N / P;
 
     public static final int maxValue = 5;
+
+    public static long startTime = 0;
+    public static long endTime = 0;
+
 
     private static MyMatrix MA = new MyMatrix(N);
     private static MyMatrix MC = new MyMatrix(N);
@@ -29,6 +33,7 @@ public class Main {
             tasks[i] = new Thread(new TaskWorker(i, monitor));
         }
 
+        startTime = System.currentTimeMillis();
         for (int i = 0; i < P; i++) {
             tasks[i].start();
         }
@@ -62,5 +67,9 @@ public class Main {
 
     public static MyVector getZ() {
         return Z;
+    }
+
+    public static long getTime() {
+        return endTime - startTime;
     }
 }

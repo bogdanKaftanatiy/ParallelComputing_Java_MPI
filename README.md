@@ -1,1 +1,1 @@
-Parallel programing course work
+# ParallelComputing_Java_MPI

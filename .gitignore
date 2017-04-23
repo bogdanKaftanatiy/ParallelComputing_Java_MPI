@@ -15,3 +15,12 @@ target/
 *.iml
 .idea/
 
+
+#MS Visual Studio
+Debug/
+*.sln
+*.opensdf
+*.suo
+*.vcxproj
+*.filters
+

@@ -1,5 +1,6 @@
 package com.kaftanatiy.CourseWork2017Program1.threads;
 
+import com.kaftanatiy.CourseWork2017Program1.Main;
 import com.kaftanatiy.CourseWork2017Program1.primitives.MyVector;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class MyRecursiveMaxTask extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        if(vector.getDimension() > 10) {
+        if(vector.getDimension() > Main.getH() / Main.getP() && vector.getDimension() > 2) {
             List<MyRecursiveMaxTask> subtasks = createSubtasks();
 
             for(MyRecursiveMaxTask subtask : subtasks) {

@@ -24,7 +24,6 @@ public class TaskWorker implements Runnable {
 
     @Override
     public void run() {
-//        System.out.println("Thread " + tid + ": start execution");
         if (tid == 0) {
             monitor.inputMB();
             monitor.inputMO();
@@ -45,10 +44,8 @@ public class TaskWorker implements Runnable {
         int startIndex = tid * Main.getH();
         int endIndex = (tid != Main.getP() - 1) ? (tid + 1) * Main.getH() : Main.getN();
 
-
-//        int alpha_i = Main.getZ().getMaxElement(startIndex, endIndex);
         MyRecursiveMaxTask myRecursiveMaxTask = new MyRecursiveMaxTask(Main.getZ().getPart(startIndex, endIndex));
-        int alpha_i = new ForkJoinPool(Main.getH()).invoke(myRecursiveMaxTask);
+        int alpha_i = new ForkJoinPool(Main.getP()).invoke(myRecursiveMaxTask);
 
         monitor.computeMaxAlpha(alpha_i);
 
@@ -85,6 +82,5 @@ public class TaskWorker implements Runnable {
                 System.out.println("Result was calculated. Matrix is too large");
         }
 
-//        System.out.println("Thread " + tid + ": finish execution");
     }
 }

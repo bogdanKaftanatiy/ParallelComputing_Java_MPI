@@ -6,7 +6,7 @@ import com.kaftanatiy.CourseWork2017Program1.threads.TaskControl;
 import com.kaftanatiy.CourseWork2017Program1.threads.TaskWorker;
 
 public class Main {
-    private static int N = 2500;
+    private static int N = 8;
     private static int P = 4;
     private static int H = N / P;
 

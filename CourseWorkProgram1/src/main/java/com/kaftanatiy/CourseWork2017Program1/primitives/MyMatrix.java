@@ -46,33 +46,6 @@ public class MyMatrix {
         return dimension;
     }
 
-    public MyMatrix multipleMatrix(MyMatrix other) {
-        if(this.dimension != other.dimension)
-            throw new IllegalArgumentException();
-        MyMatrix result = new MyMatrix(dimension);
-
-        for (int i = 0; i < dimension; i++){
-            for (int j = 0; j < dimension; j++){
-                result.array[i][j] = 0;
-                for (int k = 0; k < dimension; k++){
-                    result.array[i][j] += this.array[i][k] * other.array[k][j];
-                }
-            }
-        }
-
-        return result;
-    }
-
-    public MyMatrix multipleNumber(int number) {
-        MyMatrix result = new MyMatrix(this);
-        for (int i = 0; i < dimension; i++) {
-            for (int j = 0; j < dimension; j++){
-                result.array[i][j] *= number;
-            }
-        }
-        return result;
-    }
-
     @Override
     public String toString() {
         String result = "";

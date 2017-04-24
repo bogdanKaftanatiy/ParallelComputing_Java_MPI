@@ -18,9 +18,6 @@ int maxNumber(int vector[N], int start, int end);
 void sendMatrixPart(int matrix[N][N], int start, int end, int dest, int tag);
 void recvMatrixPart(int matrix[N][N], int start, int end, int source, int tag, MPI_Status status);
 
-
-bool isNull(int V[N], int M1[N][N], int M2[N][N], int M3[N][N], int M4[N][N]);
-
 int main(int argc, char* argv[])
 {
 	MPI_Init(&argc, &argv);
@@ -258,7 +255,10 @@ int main(int argc, char* argv[])
 	if (rank == P / 3 - 1)
 	{
 		cout << "Result MA:" << endl;
-		outputMatrix(MA);
+		if (N <= 10)
+			outputMatrix(MA);
+		else
+			cout << "Matrix is too large." << endl;
 	}
 
 

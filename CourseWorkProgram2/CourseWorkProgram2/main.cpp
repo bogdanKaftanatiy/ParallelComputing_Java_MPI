@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int N = 6;
+const int N = 9;
 
 void inputMatrix(int matrix[N][N]);
 void outputMatrix(int matrix[N][N]);
